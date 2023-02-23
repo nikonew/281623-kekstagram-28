@@ -1,11 +1,11 @@
 // функция проверки строки
 
-function SeachLengthString (myString,maxLength) {
+function checkLengthString (myString,maxLength) {
   return myString.length <= maxLength;
 }
-SeachLengthString ('проверяемая строка', 20);
-SeachLengthString ('проверяемая строка', 18);
-SeachLengthString ('проверяемая строка',10);
+checkLengthString ('проверяемая строка', 20);
+checkLengthString ('проверяемая строка', 18);
+checkLengthString ('проверяемая строка',10);
 
 // функция палидром это или нет
 
