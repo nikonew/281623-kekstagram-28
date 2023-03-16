@@ -42,6 +42,6 @@ const getPictures = () =>
     createPicture(pictureIndex + 1)
   );
 getPictures();
-console.log(getPictures());
+
 
 export { createMessage, createComment, createPicture, getPictures, createIdGenerator};
