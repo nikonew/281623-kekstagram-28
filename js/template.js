@@ -6,11 +6,11 @@ const pictureFragment = document.createDocumentFragment();
 
 const similarPictures = getPictures();
 
-similarPictures.forEach((imageData, likes, comments) => {
+similarPictures.forEach((imageData) => {
   const userPicture = templatePicture.cloneNode(true);
   userPicture.querySelector('.picture__img').src = imageData.url;
-  userPicture.querySelector('.picture__likes').textContent = likes;
-  userPicture.querySelector('.picture__comments').textContent = comments.lenght;
+  userPicture.querySelector('.picture__likes').textContent = imageData.likes;
+  userPicture.querySelector('.picture__comments').textContent = imageData.comments.lenght;
   picturesContainer.append(userPicture);
 });
 
