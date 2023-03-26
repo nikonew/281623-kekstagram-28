@@ -10,7 +10,7 @@ similarPictures.forEach((imageData) => {
   const userPicture = templatePicture.cloneNode(true);
   userPicture.querySelector('.picture__img').src = imageData.url;
   userPicture.querySelector('.picture__likes').textContent = imageData.likes;
-  userPicture.querySelector('.picture__comments').textContent = imageData.comments.lenght;
+  userPicture.querySelector('.picture__comments').textContent = imageData.comments.length;
   picturesContainer.append(userPicture);
 });
 
