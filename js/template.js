@@ -14,6 +14,8 @@ similarPictures.forEach((imageData) => {
   picturesContainer.append(userPicture);
 });
 
-picturesContainer.appendChild(pictureFragment);
+picturesContainer.append(pictureFragment);
 
 
+
+export { picturesContainer };
