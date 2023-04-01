@@ -2,9 +2,12 @@ import { getPictures } from './create.js';
 
 const templatePicture = document.querySelector('#picture').content;
 const picturesContainer = document.querySelector('.pictures');
-const pictureFragment = document.createDocumentFragment();
+
 
 const similarPictures = getPictures();
+
+
+const pictureFragment = document.createDocumentFragment();
 
 similarPictures.forEach((imageData) => {
   const userPicture = templatePicture.cloneNode(true);
@@ -17,5 +20,4 @@ similarPictures.forEach((imageData) => {
 picturesContainer.append(pictureFragment);
 
 
-
-export { picturesContainer };
+export { picturesContainer};
