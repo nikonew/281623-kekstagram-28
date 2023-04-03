@@ -28,13 +28,10 @@ const openImagePreview = (evt) => {
     bigImageElement.classList.remove('hidden');
     document.body.classList.add('modal-open');
     bigImageElement.querySelector('.big-picture__img img').src = evt.target.src;
-    console.log(document.querySelector('[data-picture-id]'));
-    const pictureDetails = document.querySelector('[data-picture-id]');
-    console.log(document.querySelector('.social__caption').textContent);
-    pictureDetails = document.querySelector('.social__caption').textContent = evt.target.dataset.description;
-    console.log(bigImageElement.querySelector('.likes-count').textContent);
-    pictureDetails = bigImageElement.querySelector('.likes-count').textContent = evt.target.likes;
   }
+  const picture = evt.target.closest('[data-picture-id]');
+  const pictureDetails = getPictures();
+  pictureDetails.find((item) => item.id === picture.evt.dataset.pictureId);
   document.addEventListener('keydown', onBigImageKeydown);
 };
 
