@@ -14,6 +14,7 @@ similarPictures.forEach((imageData) => {
   userPicture.querySelector('.picture__img').src = imageData.url;
   userPicture.querySelector('.picture__likes').textContent = imageData.likes;
   userPicture.querySelector('.picture__comments').textContent = imageData.comments.length;
+  userPicture.querySelector('.picture__img').dataset.pictureId = imageData.id;
   picturesContainer.append(userPicture);
 });
 
