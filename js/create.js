@@ -43,5 +43,6 @@ const getPictures = () =>
   );
 getPictures();
 
+const pictures = getPictures();
 
-export { createMessage, createComment, createPicture, getPictures, createIdGenerator};
+export { pictures };

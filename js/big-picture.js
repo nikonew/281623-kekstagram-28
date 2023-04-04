@@ -1,9 +1,11 @@
-import { getPictures } from './create.js';
+import { pictures } from './create.js';
 import { picturesContainer } from './template.js';
 import { isEscapeKey } from './get-random-integer.js';
 
 const bigImageElement = document.querySelector('.big-picture');
 const bigImageCansel = document.querySelector('.big-picture__cancel');
+const bigImageComments = document.querySelector('.social__comment-count');
+const bigImageCommentsLoader = document.querySelector('.comments-loader');
 
 
 const onBigImageKeydown = (evt) => {
@@ -14,12 +16,12 @@ const onBigImageKeydown = (evt) => {
 };
 
 
-/*const renderBigPictureDetails = ({url, likes, description}) => {
+const renderBigPictureDetails = ({url, likes, description}) => {
   bigImageElement.querySelector('.big-picture__img img').src = url;
   bigImageElement.querySelector('.big-picture__img img').alt = description;
   bigImageElement.querySelector('.likes-count').textContent = likes;
   bigImageElement.querySelector('.social__caption').textContent = description;
-};*/
+};
 
 
 const openImagePreview = (evt) => {
@@ -27,14 +29,17 @@ const openImagePreview = (evt) => {
     evt.preventDefault();
     bigImageElement.classList.remove('hidden');
     document.body.classList.add('modal-open');
+    bigImageComments.classList.add('hidden');
+    bigImageCommentsLoader.classList.add('hidden');
     bigImageElement.querySelector('.big-picture__img img').src = evt.target.src;
   }
-  const picture = evt.target.closest('[data-picture-id]');
-  const pictureDetails = getPictures();
-  pictureDetails.find((item) => item.id === picture.evt.dataset.pictureId);
+
+  const pictureDetails = pictures;
+  const pictureId = parseInt(evt.target.dataset.pictureId, 10);
+  const pictureData = pictureDetails.find((item) => item.id === pictureId);
+  renderBigPictureDetails(pictureData);
   document.addEventListener('keydown', onBigImageKeydown);
 };
-
 
 picturesContainer.addEventListener ('click', openImagePreview);
 

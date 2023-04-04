@@ -1,15 +1,12 @@
-import { getPictures } from './create.js';
+import { pictures } from './create.js';
 
 const templatePicture = document.querySelector('#picture').content;
 const picturesContainer = document.querySelector('.pictures');
 
 
-const similarPictures = getPictures();
-
-
 const pictureFragment = document.createDocumentFragment();
 
-similarPictures.forEach((imageData) => {
+pictures.forEach((imageData) => {
   const userPicture = templatePicture.cloneNode(true);
   userPicture.querySelector('.picture__img').src = imageData.url;
   userPicture.querySelector('.picture__likes').textContent = imageData.likes;
