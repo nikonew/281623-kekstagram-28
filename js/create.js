@@ -20,7 +20,7 @@ const createMessage = () =>
 const createComment = () =>({
   id: generatorComment(),
   url: `img/avatar-${getRandomInteger(1, AVATAR_COUNT).svg}`, // использование шаблонной строки ${}
-  massage: createMessage(),
+  message: createMessage(),
   name: getRandomArrayElement(NAMES),
 });
 

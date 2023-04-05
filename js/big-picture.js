@@ -4,9 +4,11 @@ import { isEscapeKey } from './get-random-integer.js';
 
 const bigImageElement = document.querySelector('.big-picture');
 const bigImageCansel = document.querySelector('.big-picture__cancel');
+const bigImageCommentTemplate = document.querySelector('.social__comments');
+const bigImageCommentContainer = document.querySelector('.social__comment');
 const bigImageComments = document.querySelector('.social__comment-count');
 const bigImageCommentsLoader = document.querySelector('.comments-loader');
-
+const fragment = document.createDocumentFragment();
 
 const onBigImageKeydown = (evt) => {
   if (isEscapeKey(evt)) {
@@ -38,6 +40,14 @@ const openImagePreview = (evt) => {
   const pictureId = parseInt(evt.target.dataset.pictureId, 10);
   const pictureData = pictureDetails.find((item) => item.id === pictureId);
   renderBigPictureDetails(pictureData);
+  pictureData.comments.forEach((item) => {
+    const commentPicture = bigImageCommentTemplate.cloneNode(true);
+    commentPicture.document.querySelector('.social__picture').src = item.url;
+    commentPicture.document.querySelector('.social__picture').alt = item.name;
+    commentPicture.document.querySelector('.social__text').textContent = item.message;
+    bigImageCommentContainer.append(commentPicture);
+  });
+  bigImageCommentContainer(fragment);
   document.addEventListener('keydown', onBigImageKeydown);
 };
 
