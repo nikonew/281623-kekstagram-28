@@ -41,13 +41,14 @@ const openImagePreview = (evt) => {
   const pictureData = pictureDetails.find((item) => item.id === pictureId);
   renderBigPictureDetails(pictureData);
   pictureData.comments.forEach((item) => {
-    const commentPicture = bigImageCommentTemplate.cloneNode(true);
-    commentPicture.document.querySelector('.social__picture').src = item.url;
-    commentPicture.document.querySelector('.social__picture').alt = item.name;
-    commentPicture.document.querySelector('.social__text').textContent = item.message;
-    bigImageCommentContainer.append(commentPicture);
+    bigImageCommentTemplate.innerHTML = '';
+    const commentPicture = bigImageCommentContainer.cloneNode(true);
+    commentPicture.querySelector('.social__picture').src = item.url;
+    commentPicture.querySelector('.social__picture').alt = item.name;
+    commentPicture.querySelector('.social__text').textContent = item.message;
+    bigImageCommentTemplate.append(commentPicture);
   });
-  bigImageCommentContainer(fragment);
+  bigImageCommentTemplate.append(fragment);
   document.addEventListener('keydown', onBigImageKeydown);
 };
 

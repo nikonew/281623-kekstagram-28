@@ -19,7 +19,7 @@ const createMessage = () =>
 // функция для создания комментария
 const createComment = () =>({
   id: generatorComment(),
-  url: `img/avatar-${getRandomInteger(1, AVATAR_COUNT).svg}`, // использование шаблонной строки ${}
+  url: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`, // использование шаблонной строки ${}
   message: createMessage(),
   name: getRandomArrayElement(NAMES),
 });
