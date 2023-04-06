@@ -40,8 +40,8 @@ const openImagePreview = (evt) => {
   const pictureId = parseInt(evt.target.dataset.pictureId, 10);
   const pictureData = pictureDetails.find((item) => item.id === pictureId);
   renderBigPictureDetails(pictureData);
+  bigImageCommentTemplate.innerHTML = '';
   pictureData.comments.forEach((item) => {
-    bigImageCommentTemplate.innerHTML = '';
     const commentPicture = bigImageCommentContainer.cloneNode(true);
     commentPicture.querySelector('.social__picture').src = item.url;
     commentPicture.querySelector('.social__picture').alt = item.name;
