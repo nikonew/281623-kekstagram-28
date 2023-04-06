@@ -19,8 +19,8 @@ const createMessage = () =>
 // функция для создания комментария
 const createComment = () =>({
   id: generatorComment(),
-  url: `img/avatar-${getRandomInteger(1, AVATAR_COUNT).svg}`, // использование шаблонной строки ${}
-  massage: createMessage(),
+  url: `img/avatar-${getRandomInteger(1, AVATAR_COUNT)}.svg`, // использование шаблонной строки ${}
+  message: createMessage(),
   name: getRandomArrayElement(NAMES),
 });
 
@@ -43,5 +43,6 @@ const getPictures = () =>
   );
 getPictures();
 
+const pictures = getPictures();
 
-export { createMessage, createComment, createPicture, getPictures, createIdGenerator};
+export { pictures };
