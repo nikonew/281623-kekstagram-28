@@ -23,12 +23,13 @@ const onBigImageKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     bigImageElement.classList.add('hidden');
+    commentsShow = 0;
+    commentsArray.length = 0;
   }
 };
 
 
 const renderComments = (pictureDataList) => {
-  bigImageCommentTemplate.innerHTML = '';
   pictureDataList.forEach((item) => {
     const commentPicture = bigImageCommentContainer.cloneNode(true);
     commentPicture.querySelector('.social__picture').src = item.url;
@@ -61,6 +62,7 @@ const renderBigPictureDetails = ({url, likes, comments, description}) => {
   bigImageElement.querySelector('.social__caption').textContent = description;
   bigImageElement.querySelector('.comments-count').textContent = comments.length;
   renderAllComments(comments);
+  loaderComments();
 };
 
 const openImagePreview = (evt) => {
@@ -76,8 +78,8 @@ const openImagePreview = (evt) => {
   const pictureData = pictureDetails.find((item) => item.id === pictureId);
   renderBigPictureDetails(pictureData);
   const list = pictureData.comments;
+  bigImageCommentTemplate.innerHTML = '';
   renderComments(list);
-  loaderComments();
   document.addEventListener('keydown', onBigImageKeydown);
 };
 
@@ -89,5 +91,7 @@ bigImageCansel.addEventListener ('click', () => {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onBigImageKeydown);
   bigImageCommentsLoader.removeEventListener('click', loaderComments);
+  commentsShow = 0;
+  commentsArray.length = 0;
 });
 
