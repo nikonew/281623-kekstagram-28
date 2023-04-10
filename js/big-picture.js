@@ -89,7 +89,7 @@ bigImageCansel.addEventListener ('click', () => {
   bigImageElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onBigImageKeydown);
-  //bigImageCommentsLoader.removeEventListener('click', loaderComments);
+  document.removeEventListener('click', loaderComments);
   commentsShow = 0;
   commentsArray.length = 0;
 });
