@@ -1,4 +1,7 @@
 import { isEscapeKey } from './get-random-integer.js';
+import {resetScale, buttonScaleOn, buttonScaleOf} from './changSizeImg.js';
+import {resetEffects} from './effects.js';
+import './effects.js';
 
 const formImageUpload = document.querySelector('.img-upload__form');
 const fileUpload = formImageUpload.querySelector ('#upload-file');
@@ -21,7 +24,9 @@ const onImageEscOverlay = (evt) => {
     evt.preventDefault();
     overlayImage.classList.add('hidden');
     document.body.classList.remove('modal-open');
+    formImageUpload.reset();
     pristine.reset();
+    resetScale();
   }
 };
 
@@ -75,7 +80,11 @@ const closeImageModal = () => {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onImageEscOverlay);
   overlayCloseImage.removeEventListener('click', closeImageModal);
-
+  formImageUpload.reset();
+  pristine.reset();
+  resetScale();
+  buttonScaleOf();
+  resetEffects();
 };
 
 const openImageModal = () => {
@@ -85,6 +94,7 @@ const openImageModal = () => {
   overlayCloseImage.addEventListener('click', closeImageModal);
   fieldCommentsFocus();
   fieldHashtagsFocus();
+  buttonScaleOn();
 };
 
 fileUpload.addEventListener('change', openImageModal);
