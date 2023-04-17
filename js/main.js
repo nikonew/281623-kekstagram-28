@@ -24,7 +24,6 @@ try {
   const debounceRenderPictureModal = debounce(openImagePreview);
   init(data,debounceRenderPictureModal);
   openImagePreview(filteredPictures());
-  openImagePreview(data);
 } catch (err) {
   showAlert(err.message);
 }
