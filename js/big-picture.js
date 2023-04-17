@@ -75,15 +75,15 @@ const openImagePreview = (evt) => {
     bigImageElement.classList.remove('hidden');
     document.body.classList.add('modal-open');
     bigImageElement.querySelector('.big-picture__img img').src = evt.target.src;
+    const pictureDetails = pictures;
+    const pictureId = parseInt(evt.target.dataset.pictureId, 10);
+    const pictureData = pictureDetails.find((item) => item.id === pictureId);
+    renderBigPictureDetails(pictureData);
+    bigImageCommentTemplate.innerHTML = '';
+    loaderComments();
+    document.addEventListener('keydown', onBigImageKeydown);
   }
 
-  const pictureDetails = pictures;
-  const pictureId = parseInt(evt.target.dataset.pictureId, 10);
-  const pictureData = pictureDetails.find((item) => item.id === pictureId);
-  renderBigPictureDetails(pictureData);
-  bigImageCommentTemplate.innerHTML = '';
-  loaderComments();
-  document.addEventListener('keydown', onBigImageKeydown);
 };
 
 picturesContainer.addEventListener ('click', openImagePreview);
