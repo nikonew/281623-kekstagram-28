@@ -2,6 +2,7 @@ import { isEscapeKey } from './get-random-integer.js';
 import {resetScale, buttonScaleOn, buttonScaleOf} from './changSizeImg.js';
 import {resetEffects} from './effects.js';
 import './effects.js';
+import {loadUserPhoto} from './user-photo.js';
 
 const formImageUpload = document.querySelector('.img-upload__form');
 const fileUpload = formImageUpload.querySelector ('#upload-file');
@@ -122,6 +123,7 @@ const openImageModal = () => {
   fieldCommentsFocus();
   fieldHashtagsFocus();
   buttonScaleOn();
+  loadUserPhoto();
 };
 
 fileUpload.addEventListener('change', openImageModal);
